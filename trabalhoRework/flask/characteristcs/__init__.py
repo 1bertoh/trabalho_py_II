@@ -1,0 +1,1 @@
+from characteristcs import todasCaracteristicasAvatares
