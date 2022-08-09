@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="card" style="background-color: red; width: 700px; height: 500px; margin: auto auto; border-radius: 32px; ">
+            <div id="avatar_nome" style="height: 50px; background-color: blue; border-radius: 32px 32px 0 0;"></div>
+            {% if dados %}
+            <form action="{{ url_for('CacaView:cadastrar_1', id = dados.id) }}" method="post">
+                <div style="height: 25px; color: white; font-weight: bold; font-size: larger;">
+                    <label for="id">Id: </label>
+                    <input type="text" id="id" name="id"  value="{{ dados.id }}">
+                </div>
+            {% else %}
+            <form action="{{ url_for('CacaView:cadastrar_0') }}" method="post">
+            {% endif %}
+            <div id="nome" style="height: 25px; color: white; font-weight: bold; font-size: larger;">
+                <label for="name">Nome: </label>
+                <input required type="text" id="name" name="nome" placeholder="Digite seu nome" {% if dados %} value="{{ dados.nome }}" {% endif %}>
+            </div>
+            <div id="genero" style="height: 25px; color: white; font-weight: bold; font-size: larger;">
+                <label for="gender">Genêro: </label>
+                <select type="text" id="gender" name="genero" placeholder="Digite seu sobrenome" {% if dados %} value="{{ dados.sobrenome }}" {% endif %}>
+                    <option {% if dados.genero == "M" %} selected {% endif %} value="M">Masculino</option>
+                    <option {% if dados.genero == "F" %} selected {% endif %} value="F">Feminino</option>
+                    <option {% if dados.genero == "N" %} selected {% endif %} value="N">Não declarar</option>
+                </select>
+            </div>
+            <div id="raca" style="height: 25px; color: white; font-weight: bold; font-size: larger;">
+                <label for="raca">Raça: </label>
+                <select type="text" id="raca" name="raca" value="1" placeholder="Digite seu cpf" {% if dados %} value="{{ dados.cpf }}" {% endif %}>
+                    <option {% if dados.raca == "0" %} selected {% endif %} value="0">Elfo Negro</option>
+                    <option {% if dados.raca == "1" %} selected {% endif %} value="1">Argoniano</option>
+                    <option {% if dados.raca == "2" %} selected {% endif %} value="2">Elfo da Floresta</option>
+                    <option {% if dados.raca == "3" %} selected {% endif %} value="3">Bretão</option>
+                    <option {% if dados.raca == "4" %} selected {% endif %} value="4">Alto Elfo</option>
+                    <option {% if dados.raca == "5" %} selected {% endif %} value="5">Imperial</option>
+                    <option {% if dados.raca == "6" %} selected {% endif %} value="6">Khajit</option>
+                    <option {% if dados.raca == "7" %} selected {% endif %} value="7">Nórdico</option>
+                    <option {% if dados.raca == "8" %} selected {% endif %} value="8">Orc</option>
+                    <option {% if dados.raca == "9" %} selected {% endif %} value="9">Redguard</option>
+                </select>
+            </div>
+            <div id="funcao" style="height: 25px; color: white; font-weight: bold; font-size: larger;">
+                <label for="role">Função: </label>
+                <select type="text" id="role" name="funcao" placeholder="Digite a sua data de nascimento">
+                    <option {% if dados.funcao == "0" %} selected {% endif %} value="0">suporte</option>
+                    <option {% if dados.funcao == "1" %} selected {% endif %} value="1">mago</option>
+                    <option {% if dados.funcao == "3" %} selected {% endif %} value="3">atirador</option>
+                    <option {% if dados.funcao == "4" %} selected {% endif %} value="4">guerreiro</option>
+                    <option {% if dados.funcao == "5" %} selected {% endif %} value="5">tanque</option>
+                    <option {% if dados.funcao == "6" %} selected {% endif %} value="6">furtivo</option>
+                    <option {% if dados.funcao == "7" %} selected {% endif %} value="7">caçador</option>
+                </select>    
+            </div>
+            <div id="cor_da_pele" style="height: 25px; color: white; font-weight: bold; font-size: larger;">
+                <label for="skin">Cor de pele: </label>
+                <input type="color" id="skin" name="cor-de-pele" {% if dados %} value="{{dados['cor-de-pele']}}" {% endif %} placeholder="Digite a sua data de nascimento" >
+            </div>
+            <div id="primeira_habilidade" style="height: 25px; color: white; font-weight: bold; font-size: larger;">
+                <label for="first-skill">Primeira habilidade: </label>
+                <select type="text" id="first-skill" name="first-skill" placeholder="Digite a sua data de nascimento" >
+                    <option {% if dados["first-skill"] == "0" %} selected {% endif %} value="0">lança chamas</option>
+                    <option {% if dados["first-skill"] == "1" %} selected {% endif %} value="1">cura</option>
+                    <option {% if dados["first-skill"] == "2" %} selected {% endif %} value="2">vinhas venenosa</option>
+                    <option {% if dados["first-skill"] == "3" %} selected {% endif %} value="3">furacão</option>
+                    <option {% if dados["first-skill"] == "4" %} selected {% endif %} value="4">poça d'agua</option>
+                    <option {% if dados["first-skill"] == "5" %} selected {% endif %} value="5">pele de pedra</option>
+                    <option {% if dados["first-skill"] == "6" %} selected {% endif %} value="6">lança de gelo</option>
+                    <option {% if dados["first-skill"] == "7" %} selected {% endif %} value="7">flecha certeira</option>
+                    <option {% if dados["first-skill"] == "8" %} selected {% endif %} value="8">invisibilidade</option>
+                    <option {% if dados["first-skill"] == "9" %} selected {% endif %} value="9">levesa</option>
+                    <option {% if dados["first-skill"] == "10" %} selected {% endif %} value="10">tiro crítico</option>
+                    <option {% if dados["first-skill"] == "11" %} selected {% endif %} value="11">agilidade</option>
+                    <option {% if dados["first-skill"] == "12" %} selected {% endif %} value="12">visão noturna</option>
+                    <option {% if dados["first-skill"] == "13" %} selected {% endif %} value="13">corte cortante</option>
+                </select>
+            </div>
+            <div id="regiao_natal" style="height: 25px; color: white; font-weight: bold; font-size: larger;">
+                <label for="region">Região natal: </label>
+                <select type="text" id="region" name="region" placeholder="Digite a sua data de nascimento" >
+                    <option {% if dados["region"] == "0" %} selected {% endif %} value="0">Norte Nórdico</option>
+                    <option {% if dados["region"] == "1" %} selected {% endif %} value="1">Frio Gélido Polar</option>
+                    <option {% if dados["region"] == "2" %} selected {% endif %} value="2">Praia quente do Sul</option>
+                    <option {% if dados["region"] == "3" %} selected {% endif %} value="3">Floresta Negra</option>
+                    <option {% if dados["region"] == "4" %} selected {% endif %} value="4">Pantano Pantanoso</option>
+                    <option {% if dados["region"] == "5" %} selected {% endif %} value="5">Capital</option>
+                    <option {% if dados["region"] == "6" %} selected {% endif %} value="6">Subúrbio</option>
+                    <option {% if dados["region"] == "7" %} selected {% endif %} value="7">Subsolo</option>
+                </select>
+            </div>
+            <div id="primeira_arma" style="height: 25px; color: white; font-weight: bold; font-size: larger;">
+                <label for="first-weapon">Primeira arma: </label>
+                <select type="text" id="first-weapon" name="first-weapon" placeholder="Digite a sua data de nascimento" >
+                    <option {% if dados["first-weapon"] == "0" %} selected {% endif %} value="0">lança de Lunar</option>
+                    <option {% if dados["first-weapon"] == "1" %} selected {% endif %} value="1">Arco de Atlantida</option>
+                    <option {% if dados["first-weapon"] == "2" %} selected {% endif %} value="2">Espada do fim + Escudo de titânio</option>
+                    <option {% if dados["first-weapon"] == "3" %} selected {% endif %} value="3">Varinha de Sabugueiro</option>
+                    <option {% if dados["first-weapon"] == "4" %} selected {% endif %} value="4">Adaga leve envenanda</option>
+                    <option {% if dados["first-weapon"] == "5" %} selected {% endif %} value="5">Machado de fogo</option>
+                    <option {% if dados["first-weapon"] == "6" %} selected {% endif %} value="6">Orbe estrelar</option>
+                </select>
+            </div>
+            <div id="primero_acessorio_mistico" style="height: 25px; color: white; font-weight: bold; font-size: larger;">
+                <label for="first-mistic-acessorie">Primeiro acessório místico: </label>
+                <select type="text" id="first-mistic-accesorie" name="first-mistic-acessorie" placeholder="Digite a sua data de nascimento" >
+                    <option {% if dados["first-mistic-acessorie"] == "0" %} selected {% endif %} value="0">colar da vingança</option>
+                    <option {% if dados["first-mistic-acessorie"] == "1" %} selected {% endif %} value="1">botas da solidão</option>
+                    <option {% if dados["first-mistic-acessorie"] == "2" %} selected {% endif %} value="2">capa da invisibilidade</option>
+                    <option {% if dados["first-mistic-acessorie"] == "3" %} selected {% endif %} value="3">anel solar</option>
+                    <option {% if dados["first-mistic-acessorie"] == "4" %} selected {% endif %} value="4">oculos da precisão</option>
+                    <option {% if dados["first-mistic-acessorie"] == "5" %} selected {% endif %} value="5">cinto da proteção</option>
+                    <option {% if dados["first-mistic-acessorie"] == "6" %} selected {% endif %} value="6">pulseira de mana</option>
+                    <option {% if dados["first-mistic-acessorie"] == "7" %} selected {% endif %} value="7">luvas da cura</option>
+                </select>    
+            </div>
+            {% if not dados %}
+                <div style="text-align: center;">
+                    <a href="{{ url_for('CacaView:index') }}">
+                        <div style="border: 2px solid; background-color: aquamarine; height: 40px; font-size: x-large; width: 400px; margin: 3em auto 0 auto; border-radius: 32px;">
+                            Voltar
+                        </div>
+                    </a>
+                </div>
+                <div style="text-align: center;">
+                    <button style="background-color: aquamarine; height: 40px; font-size: x-large; width: 400px; margin: 1em auto 0 auto; border-radius: 32px;"
+                    type="submit">Enviar Dados</button>
+                </div>
+            {%else%}
+                <div style="text-align: center;">
+                    <a href="{{ url_for('CacaView:listar') }}">
+                        <div style="border: 2px solid; background-color: aquamarine; height: 40px; font-size: x-large; width: 400px; margin: 3em auto 0 auto; border-radius: 32px;">
+                            Cancelar
+                        </div>
+                    </a>
+                </div>
+                <div style="text-align: center;">
+                    <button style="background-color: aquamarine; height: 40px; font-size: x-large; width: 400px; margin: 0.5em auto 0 auto; border-radius: 32px;"
+                    type="submit">Salvar</button>
+                </div>
+            {%endif%}
+        </div>
+         
+    </body>
+</html>
